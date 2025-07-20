@@ -14,7 +14,8 @@ function ProductList({ onHomeClick }) {
     setAddedToCard((prevState) => ({ ...prevState, [product.name]: true }));
   };
 
-  const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartItems = useSelector((state) => state.cart.items);
+
 
   const calculateTotalQuantity = () => {
     return cartItems
@@ -322,13 +323,13 @@ function ProductList({ onHomeClick }) {
           </div>
         </div>
         <div style={styleObjUl}>
-          <div>
+          <div  className="navbar-center-title">
             {" "}
-            <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>
+            <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA} >
               Plants
             </a>
           </div>
-          <div>
+          <div className="navbar-right">
             {" "}
             <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
               <h1 className="cart">
@@ -338,6 +339,7 @@ function ProductList({ onHomeClick }) {
                   id="IconChangeColor"
                   height="68"
                   width="68"
+                  className="cart-icon"
                 >
                   <rect width="156" height="156" fill="none"></rect>
                   <circle cx="80" cy="216" r="12"></circle>
@@ -352,7 +354,7 @@ function ProductList({ onHomeClick }) {
                     id="mainIconPathAttribute"
                   ></path>
                 </svg>
-                {calculateTotalQuantity()}
+                <span className="cart-count">{calculateTotalQuantity()}</span>
               </h1>
             </a>
           </div>
